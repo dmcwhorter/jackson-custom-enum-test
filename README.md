@@ -1,0 +1,1 @@
+# jackson-custom-enum-test
