@@ -1,5 +1,6 @@
 package test;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -24,5 +25,10 @@ public enum SimpleFakeRecordType {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+    public static SimpleFakeRecordType create(@JsonProperty("name") String name) {
+        return SimpleFakeRecordType.valueOf(name);
     }
 }
